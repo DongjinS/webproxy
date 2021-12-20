@@ -1,7 +1,24 @@
-<html>
-<head><title>test</title></head>
-<body> 
-<img align="middle" src="godzilla.gif">
-Dave O'Hallaron
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- block favicon error -->
+        <link rel="shortcut icon" href="data:image/x-icon" type="image/x-icon">
+        <meta charset="UTF-8">
+    <title>tiny web server</title>
+</head>
+DJ
+
+<body>
+    <img align="middle" src="godzilla.gif">
+    <video align="middle" controls>
+        <source src="./video/seaotter.mp4" type="video/mp4">
+        sea otters
+    </video>
+    <form align="middle" action="/cgi-bin/adder" method="GET">
+        <p>first number: <input type="text" name="first" /></p>
+        <p>second number: <input type="text" name="second" /></p>
+        <input type="submit" value="Submit" />
+    </form>
 </body>
+
 </html>

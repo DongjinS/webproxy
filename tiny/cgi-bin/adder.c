@@ -6,16 +6,23 @@
 
 int main(void) {
   char *buf, *p;
-  char arg1[MAXLINE], arg2[MAXLINE], content[MAXLINE];
+  char arg1[MAXLINE], arg2[MAXLINE], content[MAXLINE], first_num[MAXLINE], second_num[MAXLINE];
   int n1=0, n2=0;
   /* Extract the two arguments */
+  //http://54.180.150.171:8000/cgi-bin/form-adder?first=1&second=1
   if ((buf = getenv("QUERY_STRING")) != NULL) {
       p = strchr(buf, '&');
       *p = '\0';
-      strcpy(arg1, buf);
-      strcpy(arg2, p+1);
-      n1 = atoi(arg1);
-      n2 = atoi(arg2);
+      strcpy(arg1, buf); //first=1
+      strcpy(arg2, p+1); //second=1
+      p = strchr(arg1, '=');
+      *p = '\0';
+      strcpy(first_num, p+1);
+      p = strchr(arg2, '=');
+      *p = '\0';
+      strcpy(second_num, p+1);
+      n1 = atoi(first_num);
+      n2 = atoi(second_num);
   }
   /* Make the response body */
   sprintf(content, "QUERY_STRING=%s", buf);

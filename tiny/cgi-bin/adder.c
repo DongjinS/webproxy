@@ -5,7 +5,7 @@
 #include "csapp.h"
 
 int main(void) {
-  char *buf, *p;
+  char *buf, *p, *method;
   char arg1[MAXLINE], arg2[MAXLINE], content[MAXLINE], first_num[MAXLINE], second_num[MAXLINE];
   int n1=0, n2=0;
   /* Extract the two arguments */
@@ -44,11 +44,17 @@ int main(void) {
   sprintf(content, "%s<div align=center>The answer is: %d + %d = %d\r\n<p>",
           content, n1, n2, n1 + n2);
   sprintf(content, "%s<div align=center>Thanks for visiting!\r\n", content);
+
   /* Generate the HTTP response */
   printf("Connection: close\r\n");
   printf("Content-length: %d\r\n", (int)strlen(content));
   printf("Content-type: text/html\r\n\r\n");
-  printf("%s", content);
+  /* cgi 환경변수에서 request method 참조 */
+  method = getenv("REQUEST_METHOD");
+  /* method가 GET 이라면 content(response body) 전송(출력) */
+  if (strcasecmp(method, "GET")==0){
+    printf("%s", content);
+  }
   fflush(stdout);
   exit(0);
 }

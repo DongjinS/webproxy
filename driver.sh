@@ -9,6 +9,7 @@
 # 
 #     usage: ./driver.sh
 # 
+# sudo apt install net-tools -설치해야함
 
 # Point values
 MAX_BASIC=40
